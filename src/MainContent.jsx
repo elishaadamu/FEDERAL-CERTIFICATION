@@ -90,9 +90,9 @@ const MainContent = ({ data }) => {
       </div>
 
       {/* Main Content Area */}
-      <div className="flex-grow flex flex-col overflow-hidden">
+      <div className="flex-grow flex flex-col overflow-hidden min-h-0">
         {/* Mobile sidebar toggle */}
-        <div className="md:hidden p-4 border-b border-gray-800 flex-none bg-gray-900/50">
+        <div className="md:hidden p-4 border-b border-gray-800 flex-none bg-gray-900">
           <button
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             className="bg-gray-700 text-gray-200 font-semibold py-2 px-4 rounded-lg w-full flex items-center justify-between"
@@ -102,20 +102,28 @@ const MainContent = ({ data }) => {
           </button>
         </div>
 
-        <div className="flex flex-col md:flex-row flex-grow w-full overflow-hidden">
+        <div className="flex flex-col md:flex-row flex-grow w-full overflow-hidden relative min-h-0">
+          {/* Backdrop for mobile */}
+          {isSidebarOpen && (
+            <div 
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
+              onClick={() => setIsSidebarOpen(false)}
+            />
+          )}
+
           {/* Sidebar - 50% width */}
           <div
             className={`
             flex flex-col
-            md:w-[50%] md:h-full md:overflow-y-auto border-r border-gray-800 bg-gray-900/20
-            fixed md:static top-0 left-0 h-full w-4/5 max-w-sm bg-gray-800 p-6 shadow-xl z-20 transition-transform duration-300 ease-in-out
+            md:w-[50%] h-full border-r border-gray-800 bg-gray-800
+            fixed md:static top-0 left-0 h-full w-4/5 max-w-sm p-6 shadow-xl z-50 transition-transform duration-300 ease-in-out
             ${isSidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
           `}
           >
             <h2 className="text-2xl font-bold text-gray-400 mb-6 px-2 tracking-widest mt-2 uppercase">
               {isNested ? "Categories" : "Measures"}
             </h2>
-            <div className="space-y-3 px-1 pb-10 flex-grow md:overflow-y-auto">
+            <div className="space-y-3 px-1 pb-10 flex-grow overflow-y-auto">
               {isNested ? (
                 measures.map((category) => (
                   <div key={category.name} className="mb-10">
@@ -133,7 +141,7 @@ const MainContent = ({ data }) => {
                           }}
                           className={`w-full text-left p-5 rounded-2xl transition-all duration-200 border-l-8 ${
                             activeMeasureName === item.name
-                              ? "bg-[var(--active-goal-color)] bg-opacity-10 text-white font-medium border-[var(--active-goal-color)] shadow-sm"
+                              ? "bg-[var(--active-goal-color)] bg-opacity-20 text-white font-medium border-[var(--active-goal-color)] shadow-sm"
                               : "text-gray-400 border-transparent hover:bg-gray-700/50 hover:text-gray-100"
                           }`}
                         >
@@ -155,7 +163,7 @@ const MainContent = ({ data }) => {
                     }}
                     className={`w-full text-left p-5 rounded-2xl transition-all duration-200 border-l-8 ${
                       activeMeasureName === measure.name
-                        ? "bg-[var(--active-goal-color)] bg-opacity-10 text-white font-medium border-[var(--active-goal-color)] shadow-sm"
+                        ? "bg-[var(--active-goal-color)] bg-opacity-20 text-white font-medium border-[var(--active-goal-color)] shadow-sm"
                         : "text-gray-400 border-transparent hover:bg-gray-700/50 hover:text-gray-100"
                     }`}
                   >
