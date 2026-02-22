@@ -121,7 +121,7 @@ const MainContent = ({ data }) => {
           `}
           >
             <h2 className="text-2xl font-bold text-gray-400 mb-6 px-2 tracking-widest mt-2 uppercase">
-              {isNested ? "Findings" : "Measures"}
+              {isNested ? "Categories" : "Measures"}
             </h2>
             <div className="space-y-3 px-1 pb-10 flex-grow overflow-y-auto">
               {isNested ? (
