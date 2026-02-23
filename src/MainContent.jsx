@@ -186,11 +186,6 @@ const MainContent = ({ data }) => {
                 <div className="space-y-10">
                   {activeMeasure?.iframeUrl ? (
                     <div className="w-full h-[70vh] bg-gray-900 rounded-3xl overflow-hidden border border-gray-700/50 shadow-2xl relative group hover:border-[var(--active-goal-color)]/50 transition-colors duration-500">
-                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-300">
-                        <div className="bg-[var(--active-goal-color)]/10 backdrop-blur-sm px-6 py-3 rounded-full border border-[var(--active-goal-color)]/30 text-xs font-bold tracking-widest text-white uppercase shadow-xl">
-                          Interactive Preview: {activeMeasure.name}
-                        </div>
-                      </div>
                       <iframe 
                         src={activeMeasure.iframeUrl} 
                         className="w-full h-full border-0" 
