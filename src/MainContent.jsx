@@ -198,28 +198,75 @@ const MainContent = ({ data }) => {
                         loading="lazy"
                       />
                     </div>
+                  ) : activeMeasure?.imageUrl ? (
+                    <div className="w-full space-y-8 flex flex-col">
+                      {activeMeasure.content && (
+                        <div className="w-full order-1">
+                          <div className={`grid grid-cols-1 ${activeMeasure.content.length > 1 ? "lg:grid-cols-2" : "lg:grid-cols-1"} gap-8`}>
+                            {activeMeasure.content.map((c, i) => (
+                              (c.label === "Status" || c.label === "Financial Planning" || c.label === "PBPP" || c.label === "Public Participation" || c.label === "Budgeting" || c.label === "Consistency" || c.label === "Monitoring" || c.label === "Agreements" || c.label === "Freight Planning" || c.label === "Participation Plan") ? (
+                                <div key={i} className={`mb-6 ${c.label === "Status" ? "text-center" : "text-left"}`}>
+                                  <div className={`text-gray-400 uppercase tracking-widest text-xs font-bold mb-2 ${c.label === "Status" ? "" : "border-b border-gray-800 pb-2 inline-block mb-4"}`}>{c.label}</div>
+                                  <div className="text-xl font-bold text-gray-100 whitespace-pre-wrap leading-relaxed">{c.text}</div>
+                                </div>
+                              ) : (
+                                <div 
+                                  key={i} 
+                                  className={`bg-gray-950/80 p-8 rounded-3xl border-l-[6px] border-[var(--active-goal-color)] shadow-2xl transform hover:scale-[1.02] transition-all duration-500 flex flex-col justify-between ${
+                                    activeMeasure.content.length === 1 ? "max-w-4xl mx-auto" : ""
+                                  }`}
+                                >
+                                  <div>
+                                    <h4 className="text-xs font-black text-[var(--active-goal-color)] uppercase tracking-[0.3em] mb-6">
+                                      {c.label}
+                                    </h4>
+                                    <p className="text-gray-100 text-lg sm:text-xl italic leading-relaxed font-light whitespace-pre-wrap">
+                                      "{c.text}"
+                                    </p>
+                                  </div>
+                                </div>
+                              )
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                      <div className="w-full bg-gray-900 rounded-3xl overflow-hidden border border-gray-700/50 shadow-2xl group hover:border-[var(--active-goal-color)]/50 transition-all duration-500 order-2">
+                        <img 
+                          src={activeMeasure.imageUrl} 
+                          alt={activeMeasure.name}
+                          className="w-full h-auto object-contain"
+                        />
+                      </div>
+                    </div>
                   ) : activeMeasure?.content ? (
                     <div className="w-full">
                       <div className={`grid grid-cols-1 ${activeMeasure.content.length > 1 ? "lg:grid-cols-2" : "lg:grid-cols-1"} gap-8`}>
                         {activeMeasure.content.map((c, i) => (
-                          <div 
-                            key={i} 
-                            className={`bg-gray-950/80 p-8 rounded-3xl border-l-[6px] border-[var(--active-goal-color)] shadow-2xl transform hover:scale-[1.02] transition-all duration-500 flex flex-col justify-between ${
-                              activeMeasure.content.length === 1 ? "max-w-4xl mx-auto" : ""
-                            }`}
-                          >
-                            <div>
-                              <h4 className="text-xs font-black text-[var(--active-goal-color)] uppercase tracking-[0.3em] mb-6">
-                                {c.label}
-                              </h4>
-                              <p className="text-gray-100 text-lg sm:text-xl italic leading-relaxed font-light">
-                                "{c.text}"
-                              </p>
+                          (c.label === "Status" || c.label === "Financial Planning" || c.label === "PBPP" || c.label === "Public Participation" || c.label === "Budgeting" || c.label === "Consistency" || c.label === "Monitoring" || c.label === "Agreements" || c.label === "Freight Planning" || c.label === "Participation Plan") ? (
+                            <div key={i} className={`mb-10 ${c.label === "Status" ? "text-center" : "text-left"} border-b border-gray-800 pb-6`}>
+                              <div className="text-gray-400 uppercase tracking-widest text-xs font-bold mb-3">{c.label}</div>
+                              <div className="text-2xl font-bold text-gray-100 whitespace-pre-wrap leading-relaxed">{c.text}</div>
                             </div>
-                            <div className="mt-8 flex justify-end">
-                              <div className="w-12 h-1 bg-[var(--active-goal-color)]/30 rounded-full"></div>
+                          ) : (
+                            <div 
+                              key={i} 
+                              className={`bg-gray-950/80 p-8 rounded-3xl border-l-[6px] border-[var(--active-goal-color)] shadow-2xl transform hover:scale-[1.02] transition-all duration-500 flex flex-col justify-between ${
+                                activeMeasure.content.length === 1 ? "max-w-4xl mx-auto" : ""
+                              }`}
+                            >
+                              <div>
+                                <h4 className="text-xs font-black text-[var(--active-goal-color)] uppercase tracking-[0.3em] mb-6">
+                                  {c.label}
+                                </h4>
+                                <p className="text-gray-100 text-lg sm:text-xl italic leading-relaxed font-light whitespace-pre-wrap">
+                                  "{c.text}"
+                                </p>
+                              </div>
+                              <div className="mt-8 flex justify-end">
+                                <div className="w-12 h-1 bg-[var(--active-goal-color)]/30 rounded-full"></div>
+                              </div>
                             </div>
-                          </div>
+                          )
                         ))}
                       </div>
                     </div>

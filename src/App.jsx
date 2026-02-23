@@ -2,6 +2,10 @@
 import React, { useState } from "react";
 import Header from "./Header";
 import MainContent from "./MainContent";
+import annualObligatedProjectsImg from "./assets/Annual Listing of Obligated Projects.png";
+import reportingProgressImg from "./assets/Reporting of Progress Toward Achieving Targets.png";
+import multimodalPlanImg from "./assets/2025 Regional Multimodal Transportation Plan.png";
+import titleVIImg from "./assets/2024 Title VI Plan.png";
 
 const HierarchicalTree = () => {
   // The JSON data from your uploaded file
@@ -27,11 +31,13 @@ const HierarchicalTree = () => {
             children: [
               { 
                 name: "Develop goals and objectives",
-                content: [{ label: "Recommendation", text: "Establish clear, measurable goals for the upcoming fiscal year based on regional growth patterns." }]
+                iframeUrl: "https://mtp-cmp-pm-dash-v1.netlify.app/"
               },
               { 
                 name: "Include transit projects beyond the first six years",
-                content: [{ label: "Recommendation", text: "Incorporate long-term transit planning that extends to a 10-20 year horizon." }]
+                content: [
+                  { label: "Status", text: "In Progress" },
+                ]
               },
               { 
                 name: "Include vision statement",
@@ -48,7 +54,9 @@ const HierarchicalTree = () => {
               },
               { 
                 name: "3-C Agreement <> IIJA",
-                content: [{ label: "Recommendation", text: "Align all current 3-C agreements with the latest IIJA (Infrastructure Investment and Jobs Act) requirements." }]
+                content: [
+                  { label: "Status", text: "In Progress" },
+                ]
               },
               { 
                 name: "Title VI training",
@@ -56,7 +64,13 @@ const HierarchicalTree = () => {
               },
               { 
                 name: "Replace buses with CVTA Revenues",
-                content: [{ label: "Recommendation", text: "Allocate 15% of CVTA revenue specifically for the replacement of aging bus fleet components." }]
+                content: [
+                  { label: "Status", text: "In Progress" },
+                ]
+              },
+              { 
+                name: "Have a complete Annual Listing of Obligated Projects",
+                imageUrl: annualObligatedProjectsImg,
               },
             ],
           },
@@ -70,21 +84,25 @@ const HierarchicalTree = () => {
             description: "Plan Elements",
             children: [
               { 
-                name: "Financial Planning methodology",
-                content: [{ label: "Overview", text: "The MTP financial planning methodology ensures that the transportation plan is fiscally constrained and based on realistic revenue projections from federal, state, and local sources." }]
+                name: "Financial Planning",
+                content: [
+                  { label: "Financial Planning", text: "a. Fiscal constraint (Revenue – Cost ≥ $0)\nb. Illustrative projects" }
+                ]
               },
               { 
                 name: "PBPP (Performance Based Planning and Programming)",
-                content: [{ label: "Strategic Focus", text: "PBPP uses performance data to inform relative investment decisions, focusing on achieving specific national and regional goals for the transportation system." }]
+                imageUrl: reportingProgressImg,
+                content: [
+                  { label: "PBPP", text: "a. Development and Sharing of Performance Management Data\nb. Selection of Performance Targets\nc. Reporting of Performance Targets\nd. Reporting of Progress Toward Achieving Targets (System Performance Report)" }
+                ]
               },
               { 
                 name: "Public Participation for MTP",
-                content: [{ label: "Engagement Strategy", text: "Ensuring effective public participation throughout the MTP development process, reaching out to diverse communities to gather input on long-range vision." }]
+                content: [
+                  { label: "Public Participation", text: "a. Meeting notices\n        i. one to two weeks in advances\n        ii. electronic (website, SM), non-electronic-local libraries, Direct Mail, public outreach" }
+                ]
               },
-              { 
-                name: "System Performance Report",
-                content: [{ label: "Annual Assessment", text: "A detailed report assessing the current performance of the regional transportation system against established targets and benchmarks." }]
-              },
+              
             ],
           },
         ],
@@ -98,24 +116,21 @@ const HierarchicalTree = () => {
             children: [
               { 
                 name: "Budgeting Process & Coordination",
-                content: [{ label: "Financial Management", text: "Outlines the collaborative process for developing the annual budget, coordinating between VDOT, DRPT, and local jurisdictions." }]
+                content: [{ label: "Budgeting", text: "a. Internal Coordination\nb. External Coordination" }]
               },
               { 
                 name: "Ensure Consistency with VDOT",
-                content: [{ label: "Policy Alignment", text: "Mechanisms to ensure all planning activities are consistent with state policies and long-term VDOT infrastructure goals." }]
+                content: [{ label: "Consistency", text: "a. Based on State & Federal Transportation Planning Requirements\nb. Regional Priorities & Coordination\nc. Annual State & Federal Emphasis Areas\nd. Use of VDOT approved Templates & Forms" }]
               },
               { 
                 name: "Amendments and Modifications",
-                content: [{ label: "Program Updates", text: "Procedures for updating the UPWP mid-cycle to account for new funding or changing project priorities." }]
+                content: [{ label: "Management", text: "Procedures for updating the UPWP mid-cycle to account for new funding or changing project priorities." }]
               },
               { 
                 name: "Fiscal Monitoring",
-                content: [{ label: "Oversight", text: "Continuous monitoring of expenditures to ensure all planning funds are used efficiently and in compliance with federal guidelines." }]
+                content: [{ label: "Monitoring", text: "a. Routine invoice payment\nb. Quarterly Reconciliation" }]
               },
-              { 
-                name: "Audits, Certifications & Reviews",
-                content: [{ label: "Accountability", text: "Regular reviews and audits to certify that the MPO's planning process meets all federal and state requirements." }]
-              },
+             
             ],
           },
         ],
@@ -129,15 +144,15 @@ const HierarchicalTree = () => {
             children: [
               { 
                 name: "Agreements (Air Quality)",
-                content: [{ label: "Environmental Compliance", text: "Inter-agency agreements ensuring that transportation plans conform to state air quality implementation plans." }]
+                content: [{ label: "Agreements", text: "Inter-agency agreements ensuring that transportation plans conform to state air quality implementation plans." }]
               },
               { 
                 name: "3C Agreement",
-                content: [{ label: "Coordination", text: "The foundational Continuous, Cooperative, and Comprehensive (3C) agreement between the MPO, the State, and transit operators." }]
+                content: [{ label: "Agreements", text: "The foundational Continuous, Cooperative, and Comprehensive (3C) agreement between the MPO, the State, and transit operators." }]
               },
               { 
                 name: "Bylaws",
-                content: [{ label: "Governance", text: "The governing rules for the MPO Policy Board and Technical Advisory Committee operations and decision-making." }]
+                content: [{ label: "Agreements", text: "The governing rules for the MPO Policy Board and Technical Advisory Committee operations and decision-making." }]
               },
             ],
           },
@@ -152,15 +167,11 @@ const HierarchicalTree = () => {
             children: [
               { 
                 name: "Annual Listing of Obligated Projects",
-                content: [{ label: "Project Tracking", text: "A comprehensive list of all transportation projects for which federal funds have been obligated in the past fiscal year." }]
+                imageUrl: annualObligatedProjectsImg,
               },
               { 
-                name: "Performance Based Planning and Programming (PBPP)",
-                content: [{ label: "Implementation", text: "Integrating performance targets directly into the TIP project selection and prioritization process." }]
-              },
-              { 
-                name: "Financial Planning",
-                content: [{ label: "Fiscal Constraint", text: "Demonstrating that the TIP is fiscally constrained by showing that funds are reasonably expected to be available." }]
+                name: "Public Comments",
+                iframeUrl: "https://tcampo-tip-2050-projects.netlify.app/"
               },
             ],
           },
@@ -174,12 +185,14 @@ const HierarchicalTree = () => {
             description: "Specialized Planning",
             children: [
               { 
-                name: "Freight Planning",
-                content: [{ label: "Logistics", text: "Strategies to improve the efficiency and safety of freight movement throughout the tri-cities region." }]
+                name: "2025 Regional Multimodal Transportation Plan",
+                imageUrl: multimodalPlanImg,
               },
               { 
-                name: "Transit Planning (service across MPA boundary)",
-                content: [{ label: "Connectivity", text: "Coordinated planning for public transit services that cross the Metropolitan Planning Area boundaries." }]
+                name: "Freight Planning",
+                content: [
+                  { label: "Freight Planning", text: "a. CUCF Freight Corridor Classification – In Progress" }
+                ]
               },
             ],
           },
@@ -189,21 +202,15 @@ const HierarchicalTree = () => {
         name: "Participation",
         children: [
           {
-            name: "Public Participation & Civil Rights",
+            name: "Participation Plan",
             description: "Outreach & Compliance",
             children: [
               { 
-                name: "Public Participation Plan",
-                content: [{ label: "Outreach Strategy", text: "The formal plan detailing how the MPO will engage the public in all aspects of the planning process." }]
+                name: "Participation Plan",
+                imageUrl: titleVIImg,
+                content: [{ label: "Participation Plan", text: "a. 2024 Title VI Plan" }]
               },
-              { 
-                name: "Civil Rights",
-                content: [{ label: "Compliance", text: "Documentation ensuring the MPO’s programs and activities comply with Title VI and other civil rights requirements." }]
-              },
-              { 
-                name: "Non-discrimination",
-                content: [{ label: "Equity", text: "Polices and procedures designed to ensure that no person is excluded from participation in the planning process." }]
-              },
+
             ],
           },
         ],
